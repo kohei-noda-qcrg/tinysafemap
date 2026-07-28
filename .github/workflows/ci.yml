@@ -1,0 +1,23 @@
+name: test
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go: ['1.23', '1.24', '1.25', '1.26']
+    steps:
+      - uses: actions/checkout@v7
+      - name: setup go
+        uses: actions/setup-go@v7
+        with:
+          go-version: ${{ matrix.go }}
+      - name: run test with race detector
+        run: go test ./... -v -race
+      - name: run test without cgo
+        run: CGO_ENABLED=0 go test ./... -v
+      - name: run benchmarks
+        run: go test ./... -bench=. -benchmem -run=^$
