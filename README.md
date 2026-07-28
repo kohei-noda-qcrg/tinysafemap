@@ -16,14 +16,14 @@ It is ideal for projects that want a zero-dependency, simple Mutex-wrapped map i
 
 ### Basic Operations and Initialization
 
-You can import the package using `import "tinysafemap"` (or your custom module path).
+You can import the package using `import "github.com/kohei-noda-qcrg/tinysafemap"`.
 
 ```go
 package main
 
 import (
 	"fmt"
-	"tinysafemap"
+	"github.com/kohei-noda-qcrg/tinysafemap"
 )
 
 func main() {
